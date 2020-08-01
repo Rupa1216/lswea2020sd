@@ -10,11 +10,11 @@ app.use(bodyParser.json());
 
 app.post('/test', (req, res) => {
 	const { string_to_cut } = req.body;
-	let result = StringService.cutString(string_to_cut);
-	if (result === "") {
+	let resultingStr = StringService.cutString(string_to_cut);
+	if (resultingStr === "") {
 		res.status(404).send("Please enter a valid string");
 	} else {
-	  res.json({ return_string: result });
+	  res.json({ return_string: resultingStr });
 	}
   });
 
