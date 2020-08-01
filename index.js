@@ -3,12 +3,20 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+const StringService = require('./services/StringService');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+app.post('/test', (req, res) => {
+	const { string_to_cut } = req.body;
+	let result = StringService.cutString(string_to_cut);
+	if (result === "") {
+		res.status(404).send("Please enter a valid string");
+	} else {
+	  res.json({ return_string: result });
+	}
+  });
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
