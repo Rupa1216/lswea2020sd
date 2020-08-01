@@ -2,9 +2,7 @@ const StringService = {};
 
 StringService.cutString = (str) => {
   // Edge Cases
-  if (str === null || str === undefined) return "";
-  if (str.length < 2) return "";
-  if (typeof(str) !== "string") return "";
+  if (str === null || str === undefined || str.length < 2 || typeof(str) !== "string") return "";
 
   let result = "";
 
